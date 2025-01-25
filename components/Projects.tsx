@@ -1,13 +1,15 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { format } from "date-fns"
 
 const projects = [
   {
     title: "Dhofar Global",
     description:
       "Developed and maintained the Dhofar Global e-commerce platform using React and PHP Laravel, enhancing the site's performance and user experience.",
-    duration: "Jan 2024 - Present",
+    startDate: new Date(2024, 0, 1), // January 1, 2024
+    endDate: new Date(), // Current date
     technologies: ["React", "PHP Laravel", "PostgreSQL", "MySQL", "RESTful APIs"],
     link: "https://www.dhofarglobal.com/",
   },
@@ -15,7 +17,8 @@ const projects = [
     title: "Careerx",
     description:
       "Built a robust platform using Node.js, Angular 7, and MySQL for grocery and food delivery with real-time order tracking.",
-    duration: "Dec 2022 - Dec 2023",
+    startDate: new Date(2022, 11, 1), // December 1, 2022
+    endDate: new Date(2023, 11, 31), // December 31, 2023
     technologies: ["Node.js", "Angular 7", "MySQL"],
     link: "#",
   },
@@ -23,7 +26,8 @@ const projects = [
     title: "Choose Cubby",
     description:
       "Developed a scalable luggage storage platform for travelers using Node.js, Angular 7, and MySQL with booking, payment, and map-based navigation.",
-    duration: "Jan 2021 - Dec 2021",
+    startDate: new Date(2021, 0, 1), // January 1, 2021
+    endDate: new Date(2021, 11, 31), // December 31, 2021
     technologies: ["Node.js", "Angular 7", "MySQL"],
     link: "https://stasher.com/",
   },
@@ -39,7 +43,9 @@ export default function Projects() {
             <Card key={index}>
               <CardHeader>
                 <CardTitle>{project.title}</CardTitle>
-                <CardDescription>{project.duration}</CardDescription>
+                <CardDescription>
+                  {format(project.startDate, "MMM yyyy")} - {format(project.endDate, "MMM yyyy")}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
